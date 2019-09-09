@@ -12,7 +12,7 @@ Plugin for the [XP Compiler](https://github.com/xp-framework/compiler/) which ad
 
 Example
 -------
-Compact methods use the `fn` keywords, much like [PHP 7.4 arrow functions](https://wiki.php.net/rfc/arrow_functions_v2). The RFC suggests this in its *Future Scope* section.
+Compact methods use the `fn` keyword, much like [PHP 7.4 arrow functions](https://wiki.php.net/rfc/arrow_functions_v2). The RFC suggests this in its *Future Scope* section.
 
 ```php
 class Person {
