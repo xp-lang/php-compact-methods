@@ -1,6 +1,7 @@
 <?php namespace lang\ast\syntax\php\unittest;
 
 use lang\IllegalArgumentException;
+use lang\ast\Errors;
 use lang\ast\unittest\emit\EmittingTest;
 
 class CompactFunctionsTest extends EmittingTest {
@@ -41,4 +42,13 @@ class CompactFunctionsTest extends EmittingTest {
     $this->run('use lang\IllegalArgumentException; class <T> {
       public fn run() => throw new IllegalArgumentException("test");
     }');
-  }}
+  }
+
+  #[@test, @expect(Errors::class)]
+  public function cannot_redeclare() {
+    $this->type('class <T> {
+      public fn run() => "test1";
+      public fn run() => "test2";
+    }');
+  }
+}
