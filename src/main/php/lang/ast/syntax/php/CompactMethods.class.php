@@ -23,7 +23,7 @@ use lang\ast\syntax\Extension;
  * ```
  *
  * @see  https://wiki.php.net/rfc/arrow_functions_v2#allow_arrow_notation_for_real_functions
- * @test xp://lang.ast.unittest.emit.CompactFunctionsTest
+ * @test xp://lang.ast.syntax.php.unittest.CompactMethodsTest
  */
 class CompactMethods implements Extension {
 

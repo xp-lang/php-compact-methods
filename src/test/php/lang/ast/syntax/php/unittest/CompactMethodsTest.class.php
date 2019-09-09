@@ -4,7 +4,7 @@ use lang\IllegalArgumentException;
 use lang\ast\Errors;
 use lang\ast\unittest\emit\EmittingTest;
 
-class CompactFunctionsTest extends EmittingTest {
+class CompactMethodsTest extends EmittingTest {
 
   #[@test]
   public function with_scalar() {
