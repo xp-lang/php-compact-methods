@@ -6,7 +6,7 @@ use lang\ast\nodes\ReturnStatement;
 use lang\ast\syntax\Extension;
 
 /**
- * Compact functions
+ * Compact methods
  *
  * ```php
  * // Syntax
@@ -23,6 +23,7 @@ use lang\ast\syntax\Extension;
  * ```
  *
  * @see  https://wiki.php.net/rfc/arrow_functions_v2#allow_arrow_notation_for_real_functions
+ * @see  https://github.com/xp-framework/rfc/issues/241
  * @test xp://lang.ast.syntax.php.unittest.CompactMethodsTest
  */
 class CompactMethods implements Extension {
