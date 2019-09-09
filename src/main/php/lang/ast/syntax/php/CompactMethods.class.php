@@ -28,8 +28,8 @@ use lang\ast\syntax\Extension;
  */
 class CompactMethods implements Extension {
 
-  public function setup($parser, $emitter) {
-    $parser->body('fn', function($parse, &$body, $annotations, $modifiers) {
+  public function setup($language, $emitter) {
+    $language->body('fn', function($parse, &$body, $annotations, $modifiers) {
       $line= $parse->token->line;
       $comment= $parse->comment;
       $parse->comment= null;
@@ -44,9 +44,9 @@ class CompactMethods implements Extension {
       $parse->forward();
       $signature= $this->signature($parse);
 
-      $parse->expecting('=>', 'compact function');
+      $parse->expecting('=>', 'compact method');
       $return= new ReturnStatement($this->expression($parse, 0), $parse->token->line);
-      $parse->expecting(';', 'compact function');
+      $parse->expecting(';', 'compact method');
 
       $body[$lookup]= new Method($modifiers, $name, $signature, [$return], $annotations, $comment, $line);
     });
