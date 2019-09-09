@@ -1,5 +1,6 @@
 <?php namespace lang\ast\syntax\php\unittest;
 
+use lang\IllegalArgumentException;
 use lang\ast\unittest\emit\EmittingTest;
 
 class CompactFunctionsTest extends EmittingTest {
@@ -34,4 +35,10 @@ class CompactFunctionsTest extends EmittingTest {
     }');
     $this->assertEquals('test', $r);
   }
-}
+
+  #[@test, @expect(IllegalArgumentException::class)]
+  public function throw_expression_with_compact_method() {
+    $this->run('use lang\IllegalArgumentException; class <T> {
+      public fn run() => throw new IllegalArgumentException("test");
+    }');
+  }}
