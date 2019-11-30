@@ -29,7 +29,7 @@ use lang\ast\syntax\Extension;
 class CompactMethods implements Extension {
 
   public function setup($language, $emitter) {
-    $language->body('fn', function($parse, &$body, $annotations, $modifiers) {
+    $language->body('fn', function($parse, &$body, $meta, $modifiers) {
       $line= $parse->token->line;
       $comment= $parse->comment;
       $parse->comment= null;
@@ -42,13 +42,21 @@ class CompactMethods implements Extension {
       }
 
       $parse->forward();
-      $signature= $this->signature($parse);
+      $signature= $this->signature($parse, $meta[DETAIL_TARGET_ANNO] ?? []);
 
       $parse->expecting('=>', 'compact method');
       $return= new ReturnStatement($this->expression($parse, 0), $parse->token->line);
       $parse->expecting(';', 'compact method');
 
-      $body[$lookup]= new Method($modifiers, $name, $signature, [$return], $annotations, $comment, $line);
+      $body[$lookup]= new Method(
+        $modifiers,
+        $name,
+        $signature,
+        [$return],
+        $meta[DETAIL_ANNOTATIONS] ?? [],
+        $comment,
+        $line
+      );
     });
   }
 }

@@ -3,6 +3,7 @@
 use lang\IllegalArgumentException;
 use lang\ast\Errors;
 use lang\ast\unittest\emit\EmittingTest;
+use unittest\Assert;
 
 class CompactMethodsTest extends EmittingTest {
 
@@ -11,7 +12,7 @@ class CompactMethodsTest extends EmittingTest {
     $r= $this->run('class <T> {
       public fn run() => "test";
     }');
-    $this->assertEquals('test', $r);
+    Assert::equals('test', $r);
   }
 
   #[@test]
@@ -21,7 +22,7 @@ class CompactMethodsTest extends EmittingTest {
 
       public fn run() => $this->id;
     }');
-    $this->assertEquals('test', $r);
+    Assert::equals('test', $r);
   }
 
   #[@test]
@@ -34,7 +35,7 @@ class CompactMethodsTest extends EmittingTest {
         return $this->withId("test")->id();
       }
     }');
-    $this->assertEquals('test', $r);
+    Assert::equals('test', $r);
   }
 
   #[@test, @expect(IllegalArgumentException::class)]
@@ -50,5 +51,13 @@ class CompactMethodsTest extends EmittingTest {
       public fn run() => "test1";
       public fn run() => "test2";
     }');
+  }
+
+  #[@test]
+  public function annotations() {
+    $t= $this->type('class <T> {
+      <<test>> public fn fixture() => "test";
+    }');
+    Assert::equals(['test' => null], $t->getMethod('fixture')->getAnnotations());
   }
 }

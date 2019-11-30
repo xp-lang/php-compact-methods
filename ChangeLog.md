@@ -3,6 +3,9 @@ Compact methods for PHP - ChangeLog
 
 ## ?.?.? / ????-??-??
 
+* Adjusted to compiler API supporting member XP metadata / annotations.
+  See xp-framework/compiler#77
+  (@thekid)
 * Implemented xp-framework/rfc#334: Drop PHP 5.6. The minimum required
   PHP version is now 7.0.0!
   (@thekid)
