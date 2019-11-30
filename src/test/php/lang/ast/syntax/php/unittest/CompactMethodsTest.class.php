@@ -54,10 +54,18 @@ class CompactMethodsTest extends EmittingTest {
   }
 
   #[@test]
-  public function annotations() {
+  public function method_annotations() {
     $t= $this->type('class <T> {
       <<test>> public fn fixture() => "test";
     }');
     Assert::equals(['test' => null], $t->getMethod('fixture')->getAnnotations());
+  }
+
+  #[@test]
+  public function param_annotations() {
+    $t= $this->type('class <T> {
+      public fn fixture(<<test>> $a) => "test";
+    }');
+    Assert::equals(['test' => null], $t->getMethod('fixture')->getParameter(0)->getAnnotations());
   }
 }
