@@ -3,11 +3,11 @@
 use lang\IllegalArgumentException;
 use lang\ast\Errors;
 use lang\ast\unittest\emit\EmittingTest;
-use unittest\Assert;
+use unittest\{Assert, Expect, Test};
 
 class CompactMethodsTest extends EmittingTest {
 
-  #[@test]
+  #[Test]
   public function with_scalar() {
     $r= $this->run('class <T> {
       public fn run() => "test";
@@ -15,7 +15,7 @@ class CompactMethodsTest extends EmittingTest {
     Assert::equals('test', $r);
   }
 
-  #[@test]
+  #[Test]
   public function with_property() {
     $r= $this->run('class <T> {
       private $id= "test";
@@ -25,7 +25,7 @@ class CompactMethodsTest extends EmittingTest {
     Assert::equals('test', $r);
   }
 
-  #[@test]
+  #[Test]
   public function combined_with_argument_promotion() {
     $r= $this->run('class <T> {
       public fn withId(private $id) => $this;
@@ -38,14 +38,14 @@ class CompactMethodsTest extends EmittingTest {
     Assert::equals('test', $r);
   }
 
-  #[@test, @expect(IllegalArgumentException::class)]
+  #[Test, Expect(IllegalArgumentException::class)]
   public function throw_expression_with_compact_method() {
     $this->run('use lang\IllegalArgumentException; class <T> {
       public fn run() => throw new IllegalArgumentException("test");
     }');
   }
 
-  #[@test, @expect(Errors::class)]
+  #[Test, Expect(Errors::class)]
   public function cannot_redeclare() {
     $this->type('class <T> {
       public fn run() => "test1";
@@ -53,18 +53,18 @@ class CompactMethodsTest extends EmittingTest {
     }');
   }
 
-  #[@test]
+  #[Test]
   public function method_annotations() {
     $t= $this->type('class <T> {
-      <<test>> public fn fixture() => "test";
+      #[Test] public fn fixture() => "test";
     }');
     Assert::equals(['test' => null], $t->getMethod('fixture')->getAnnotations());
   }
 
-  #[@test]
+  #[Test]
   public function param_annotations() {
     $t= $this->type('class <T> {
-      public fn fixture(<<test>> $a) => "test";
+      public fn fixture(#[Test] $a) => "test";
     }');
     Assert::equals(['test' => null], $t->getMethod('fixture')->getParameter(0)->getAnnotations());
   }
