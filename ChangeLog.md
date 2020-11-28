@@ -3,6 +3,10 @@ Compact methods for PHP - ChangeLog
 
 ## ?.?.? / ????-??-??
 
+## 1.1.0 / 2020-11-28
+
+* Made compatible with XP Compiler version 6.0.0 - @thekid
+
 ## 1.0.0 / 2019-11-30
 
 * Adjusted to compiler API supporting member XP metadata / annotations.
