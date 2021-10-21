@@ -1,10 +1,11 @@
 Compact methods for PHP
 =======================
 
-[![Build Status on TravisCI](https://secure.travis-ci.org/xp-lang/php-compact-methods.svg)](http://travis-ci.org/xp-lang/php-compact-methods)
+[![Build status on GitHub](https://github.com/xp-lang/php-compact-methods/workflows/Tests/badge.svg)](https://github.com/xp-lang/php-compact-methods/actions)
 [![XP Framework Module](https://raw.githubusercontent.com/xp-framework/web/master/static/xp-framework-badge.png)](https://github.com/xp-framework/core)
 [![BSD Licence](https://raw.githubusercontent.com/xp-framework/web/master/static/licence-bsd.png)](https://github.com/xp-framework/core/blob/master/LICENCE.md)
-[![Requires PHP 7.0+](https://raw.githubusercontent.com/xp-framework/web/master/static/php-7_0plus.png)](http://php.net/)
+[![Requires PHP 7.0+](https://raw.githubusercontent.com/xp-framework/web/master/static/php-7_0plus.svg)](http://php.net/)
+[![Supports PHP 8.0+](https://raw.githubusercontent.com/xp-framework/web/master/static/php-8_0plus.svg)](http://php.net/)
 [![Latest Stable Version](https://poser.pugx.org/xp-lang/php-compact-methods/version.png)](https://packagist.org/packages/xp-lang/php-compact-methods)
 
 Plugin for the [XP Compiler](https://github.com/xp-framework/compiler/) which adds compact methods to the PHP language.
