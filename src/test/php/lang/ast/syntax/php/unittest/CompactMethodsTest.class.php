@@ -3,7 +3,7 @@
 use lang\IllegalArgumentException;
 use lang\ast\Errors;
 use lang\ast\unittest\emit\EmittingTest;
-use unittest\{Assert, Expect, Test};
+use test\{Assert, Expect, Test};
 
 class CompactMethodsTest extends EmittingTest {
 
