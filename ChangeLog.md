@@ -3,6 +3,8 @@ Compact methods for PHP - ChangeLog
 
 ## ?.?.? / ????-??-??
 
+* Added PHP 8.4 to the test matrix - @thekid
+
 ## 1.1.2 / 2022-02-24
 
 * Made compatible with compiler version 8.0.0 - @thekid
