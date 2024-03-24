@@ -3,6 +3,11 @@ Compact methods for PHP - ChangeLog
 
 ## ?.?.? / ????-??-??
 
+## 2.0.0 / 2022-02-24
+
+* Dropped support for PHP 7.0 - 7.3 - @thekid
+* Dropped support for XP <= 9, see xp-framework/rfc#341 - @thekid
+* Made compatible with XP 12, Compiler version 9.0.0 - @thekid
 * Added PHP 8.4 to the test matrix - @thekid
 
 ## 1.1.2 / 2022-02-24
