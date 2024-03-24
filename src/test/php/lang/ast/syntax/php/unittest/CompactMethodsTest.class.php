@@ -9,7 +9,7 @@ class CompactMethodsTest extends EmittingTest {
 
   #[Test]
   public function with_scalar() {
-    $r= $this->run('class <T> {
+    $r= $this->run('class %T {
       public fn run() => "test";
     }');
     Assert::equals('test', $r);
@@ -17,7 +17,7 @@ class CompactMethodsTest extends EmittingTest {
 
   #[Test]
   public function with_property() {
-    $r= $this->run('class <T> {
+    $r= $this->run('class %T {
       private $id= "test";
 
       public fn run() => $this->id;
@@ -27,7 +27,7 @@ class CompactMethodsTest extends EmittingTest {
 
   #[Test]
   public function combined_with_argument_promotion() {
-    $r= $this->run('class <T> {
+    $r= $this->run('class %T {
       public fn withId(private $id) => $this;
       public fn id() => $this->id;
 
@@ -40,14 +40,14 @@ class CompactMethodsTest extends EmittingTest {
 
   #[Test, Expect(IllegalArgumentException::class)]
   public function throw_expression_with_compact_method() {
-    $this->run('use lang\IllegalArgumentException; class <T> {
+    $this->run('use lang\IllegalArgumentException; class %T {
       public fn run() => throw new IllegalArgumentException("test");
     }');
   }
 
   #[Test, Expect(Errors::class)]
   public function cannot_redeclare() {
-    $this->type('class <T> {
+    $this->type('class %T {
       public fn run() => "test1";
       public fn run() => "test2";
     }');
@@ -55,7 +55,7 @@ class CompactMethodsTest extends EmittingTest {
 
   #[Test]
   public function method_annotations() {
-    $t= $this->type('class <T> {
+    $t= $this->type('class %T {
       #[Test] public fn fixture() => "test";
     }');
     Assert::equals(['test' => null], $t->getMethod('fixture')->getAnnotations());
@@ -63,7 +63,7 @@ class CompactMethodsTest extends EmittingTest {
 
   #[Test]
   public function param_annotations() {
-    $t= $this->type('class <T> {
+    $t= $this->type('class %T {
       public fn fixture(#[Test] $a) => "test";
     }');
     Assert::equals(['test' => null], $t->getMethod('fixture')->getParameter(0)->getAnnotations());
