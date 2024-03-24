@@ -3,7 +3,7 @@ Compact methods for PHP - ChangeLog
 
 ## ?.?.? / ????-??-??
 
-## 2.0.0 / 2022-02-24
+## 2.0.0 / 2024-03-24
 
 * Dropped support for PHP 7.0 - 7.3 - @thekid
 * Dropped support for XP <= 9, see xp-framework/rfc#341 - @thekid
