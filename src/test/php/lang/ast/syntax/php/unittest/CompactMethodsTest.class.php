@@ -3,6 +3,7 @@
 use lang\IllegalArgumentException;
 use lang\ast\Errors;
 use lang\ast\unittest\emit\EmittingTest;
+use lang\reflection\Annotation;
 use test\{Assert, Expect, Test};
 
 class CompactMethodsTest extends EmittingTest {
@@ -47,7 +48,7 @@ class CompactMethodsTest extends EmittingTest {
 
   #[Test, Expect(Errors::class)]
   public function cannot_redeclare() {
-    $this->type('class %T {
+    $this->declare('class %T {
       public fn run() => "test1";
       public fn run() => "test2";
     }');
@@ -55,17 +56,25 @@ class CompactMethodsTest extends EmittingTest {
 
   #[Test]
   public function method_annotations() {
-    $t= $this->type('class %T {
+    $t= $this->declare('use test\\Test; class %T {
       #[Test] public fn fixture() => "test";
     }');
-    Assert::equals(['test' => null], $t->getMethod('fixture')->getAnnotations());
+
+    Assert::equals(
+      new Annotation(Test::class, null),
+      $t->method('fixture')->annotation(Test::class)
+    );
   }
 
   #[Test]
   public function param_annotations() {
-    $t= $this->type('class %T {
+    $t= $this->declare('use test\\Test; class %T {
       public fn fixture(#[Test] $a) => "test";
     }');
-    Assert::equals(['test' => null], $t->getMethod('fixture')->getParameter(0)->getAnnotations());
+
+    Assert::equals(
+      new Annotation(Test::class, null),
+      $t->method('fixture')->parameter(0)->annotation(Test::class)
+    );
   }
 }
