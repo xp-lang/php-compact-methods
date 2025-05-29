@@ -38,6 +38,7 @@ No further action is required.
 
 See also
 --------
+* https://wiki.php.net/rfc/single-expression-functions
 * https://wiki.php.net/rfc/short-functions
 * https://wiki.php.net/rfc/arrow_functions_v2#allow_arrow_notation_for_real_functions
 * https://github.com/xp-framework/rfc/issues/241
